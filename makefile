@@ -1,23 +1,30 @@
-# makefile for a C project with a single file main.c
+# Makefile for a C++ project with a single file main.cpp
 
 # Compiler settings
-CC = gcc
-CFLAGS = -Wall
+CXX = g++
+CXXFLAGS = -Wall
+CXXFLAGS += -I"$(CPPUTEST_HOME)/include"
+CXXFLAGS += -include "$(CPPUTEST_HOME)/include/CppUTest/MemoryLeakDetectorNewMacros.h"
+CFLAGS += -include "$(CPPUTEST_HOME)/include/CppUTest/MemoryLeakDetectorMallocMacros.h"
+
+LDFLAGS = -L"$(CPPUTEST_HOME)/lib"
+LDLIBS = -lCppUTest -lCppUTestExt
 
 # Target executable name
-TARGET = fizzbuzz.exe
+TARGET = unittest.exe
 
 # Build target
 all: $(TARGET)
 
 # Rule to link the program
 $(TARGET): main.o
-	$(CC) $(CFLAGS) main.o -o $(TARGET)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) main.o -o $(TARGET) $(LDLIBS)
 
 # Rule to compile the source file
-main.o: main.c
-	$(CC) $(CFLAGS) -c main.c
+main.o: main.cpp
+	$(CXX) $(CXXFLAGS) -c main.cpp
 
 # Clean target
 clean:
-	rm -f *.o $(TARGET)
+	del "*.o"
+	del "*.exe"
