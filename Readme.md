@@ -13,4 +13,8 @@
 - テスト実行まで
   - [公式のマニュアル](https://cpputest.github.io/manual.html)
     - そのままでは動かないことがおおいので、こまごま直しながら作る
+    - 経緯メモ
+      - CppUTestはC++実装なのでg++を使う必要があった
+      - includeパスがg++に渡されてなかったCPPFLAGS → CXXFLAGSに置き換えた
+      - Make結果を見ると、-Lや-l等、ライブラリへのリンクができていないことに気付いた([参考サイト](https://avaler0604.hateblo.jp/entry/2019/01/28/235002))。LDFLAGSとLDLIBに分離して書いたら出力された
   - [setup Cpputest framework](https://matheusmbar.com/bugfree-robot/2019/03/19/set_cppputest_framework.html)
