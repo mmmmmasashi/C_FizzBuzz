@@ -16,7 +16,6 @@
             "command": "make -f Makefile.test",
             "group": {
                 "kind": "build",
-                "isDefault": true
             },
             "presentation": {
                 "reveal": "always",
