@@ -17,12 +17,12 @@ TARGET = unittest.exe
 all: $(TARGET)
 
 # Rule to link the program
-$(TARGET): main.o
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) main.o -o $(TARGET) $(LDLIBS)
+$(TARGET): unittest.o
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) unittest.o -o $(TARGET) $(LDLIBS)
 
 # Rule to compile the source file
-main.o: main.cpp
-	$(CXX) $(CXXFLAGS) -c main.cpp
+unittest.o: unittest.cpp
+	$(CXX) $(CXXFLAGS) -c unittest.cpp
 
 # Clean target
 clean:
