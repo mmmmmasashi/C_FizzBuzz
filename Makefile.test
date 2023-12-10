@@ -1,4 +1,4 @@
-# Makefile for a C++ project with a single file main.cpp
+# Makefile for a C++ project with unittest
 
 # Compiler settings
 CXX = g++
@@ -13,16 +13,23 @@ LDLIBS = -lCppUTest -lCppUTestExt
 # Target executable name
 TARGET = unittest.exe
 
+# Object files
+OBJS = unittest.o fizzbuzz.o
+
 # Build target
 all: $(TARGET)
 
 # Rule to link the program
-$(TARGET): unittest.o
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) unittest.o -o $(TARGET) $(LDLIBS)
+$(TARGET): $(OBJS)
+	$(CXX) $(LDFLAGS) $(OBJS) -o $(TARGET) $(LDLIBS)
 
-# Rule to compile the source file
-unittest.o: unittest.cpp
+# Rule to compile the unittest source file
+unittest.o: unittest.cpp fizzbuzz.h
 	$(CXX) $(CXXFLAGS) -c unittest.cpp
+
+# Rule to compile the fizzbuzz source file
+fizzbuzz.o: fizzbuzz.c fizzbuzz.h
+	$(CXX) $(CXXFLAGS) -c fizzbuzz.c
 
 # Clean target
 clean:

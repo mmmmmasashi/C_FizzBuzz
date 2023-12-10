@@ -1,15 +1,13 @@
 #include "CppUTest/CommandLineTestRunner.h"
+#include "fizzbuzz.h"
 
-TEST_GROUP(FirstTestGroup){};
+TEST_GROUP(FizzBuzzTestGroup){};
 
-TEST(FirstTestGroup, FirstTest)
+TEST(FizzBuzzTestGroup, ReturnsFizzWhenMultipleOfThree)
 {
-    FAIL("Fail me!");
-}
-
-TEST(FirstTestGroup, SecondTest)
-{
-    STRCMP_EQUAL("hello world!", "hello world!");
+    char buffer[10];
+    ToFizzBuzzNumber(3, buffer, sizeof(buffer));
+    STRCMP_EQUAL("Fizz", buffer);
 }
 
 int main(int ac, char **av)
