@@ -1,7 +1,7 @@
 # 参考 : https://news.mynavi.jp/techplus/article/c-for-windows-14/
 CMD=	fizzbuzz.exe
 SRCS=	main.c fizzbuzz.c
-OBJS=	$(SRCS:.c=.o)
+OBJS = $(patsubst %.c,bin/%.o,$(SRCS))
 
 CFLAGS+=-g
 
@@ -9,14 +9,17 @@ CC= gcc
 
 build: $(CMD)
 
-$(CMD): $(OBJS)
+$(CMD): $(OBJS) | bin
 	$(CC) $(CFLAGS) -o $(CMD) $(OBJS)
 
-.c.o:
+bin/%.o: %.c | bin
 	$(CC) -c $< -o $@
+
+bin:
+	mkdir bin
 
 clean:
 	del $(CMD)
-	del "*.o"
-	del "*.ilk"
-	del "*.pdb"
+	del "bin\*.o"
+	del "bin\*.ilk"
+	del "bin\*.pdb"
