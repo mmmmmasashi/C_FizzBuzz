@@ -13,7 +13,7 @@
         {
             "label": "build-test",
             "type": "shell",
-            "command": "make -f Makefile.test",
+            "command": "make -f MakefileTest",
             "group": {
                 "kind": "build",
             },
