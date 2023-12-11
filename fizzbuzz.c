@@ -11,21 +11,17 @@ void ToFizzBuzzNumber(int number, char *buffer, int buffer_size)
     if (number % 15 == 0)
     {
         snprintf(buffer, buffer_size, "FizzBuzz");
-        return;
     }
     else if (number % 5 == 0)
     {
         snprintf(buffer, buffer_size, "Buzz");
-        return;
     }
     else if (number % 3 == 0)
     {
         snprintf(buffer, buffer_size, "Fizz");
-        return;
     }
     else
     {
         snprintf(buffer, buffer_size, "%d", number);
-        return;
     }
 }
