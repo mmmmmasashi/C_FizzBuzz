@@ -14,24 +14,26 @@ LDLIBS = -lCppUTest -lCppUTestExt
 TARGET = unittest.exe
 
 # Object files
-OBJS = unittest.o fizzbuzz.o
+OBJS = test/unittest.o test/fizzbuzz.o
 
 # Build target
 all: $(TARGET)
 
 # Rule to link the program
-$(TARGET): $(OBJS)
+$(TARGET): $(OBJS) | test
 	$(CXX) $(LDFLAGS) $(OBJS) -o $(TARGET) $(LDLIBS)
 
 # Rule to compile the unittest source file
-unittest.o: unittest.cpp fizzbuzz.h
-	$(CXX) $(CXXFLAGS) -c unittest.cpp
+test/unittest.o: unittest.cpp fizzbuzz.h | test
+	$(CXX) $(CXXFLAGS) -c unittest.cpp -o test/unittest.o
 
 # Rule to compile the fizzbuzz source file
-fizzbuzz.o: fizzbuzz.c fizzbuzz.h
-	$(CXX) $(CXXFLAGS) -c fizzbuzz.c
+test/fizzbuzz.o: fizzbuzz.c fizzbuzz.h | test
+	$(CXX) $(CXXFLAGS) -c fizzbuzz.c -o test/fizzbuzz.o
 
+test:
+	mkdir test
 # Clean target
 clean:
 	del "*.o"
-	del "*.exe"
+	del "test/*.exe"
