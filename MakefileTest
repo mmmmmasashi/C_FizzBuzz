@@ -33,7 +33,8 @@ test/fizzbuzz.o: fizzbuzz.c fizzbuzz.h | test
 
 test:
 	mkdir test
+
 # Clean target
 clean:
-	del "*.o"
-	del "test/*.exe"
+	del "test\*.o"
+	del "$(TARGET)"
