@@ -21,7 +21,7 @@ all: $(TARGET)
 
 # Rule to link the program
 $(TARGET): $(OBJS) | test
-	$(CXX) $(LDFLAGS) $(OBJS) -o $(TARGET) $(LDLIBS)
+	$(CXX) -pthread $(LDFLAGS) $(OBJS) -o $(TARGET) $(LDLIBS)
 
 # Rule to compile the unittest source file
 test/unittest.o: unittest.cpp fizzbuzz.h | test
@@ -36,5 +36,7 @@ test:
 
 # Clean target
 clean:
+	rm -rf test/*.o
+	rm  $(TARGET)
 	del "test\*.o"
 	del "$(TARGET)"
