@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "fizzbuzz.h"
+#include "bowling.h"
 
 int main(void)
 {

@@ -1,9 +1,9 @@
 #include "CppUTest/CommandLineTestRunner.h"
-#include "fizzbuzz.h"
+#include "bowling.h"
 
-TEST_GROUP(FizzBuzzTestGroup){};
+TEST_GROUP(BowlingGameTestGroup){};
 
-TEST(FizzBuzzTestGroup, TestFail)
+TEST(BowlingGameTestGroup, FailTest)
 {
     FAIL("Fail me!");
 }
